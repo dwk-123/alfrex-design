@@ -2,7 +2,9 @@
 
 Follow this literally. Commands assume a Next.js App Router project with
 `@/*` mapped to `src/*` and the skill installed at
-`.agents/skills/alfrex-shadcn/`.
+`.agents/skills/alfrex-shadcn/`. If the skill is installed elsewhere (for
+example, `.claude/skills/alfrex-shadcn/`), substitute its resolved directory in
+every `cp` command.
 
 ## 1. Verify or initialize shadcn
 
@@ -198,7 +200,8 @@ Run:
 npm run build
 ```
 
-Then render both modes and verify:
+Then render both modes, keyboard-traverse each representative screen and
+portal, run the app's accessibility scan, and verify:
 
 - normal primary is neutral ink; it becomes paper-white with dark text in dark
   mode;
@@ -207,5 +210,8 @@ Then render both modes and verify:
   aligned;
 - cards use borders and no shadow;
 - all six status pills remain readable;
-- active navigation uses red wash/text/edge, not a second accent;
+- active navigation uses red wash/text/edge, while menu, select, and command
+  highlights remain neutral;
+- every interactive element has a clearly visible focus indicator in both
+  modes and the accessibility scan has no serious or critical findings;
 - browser console has no hydration, unknown-prop, or CSS import warnings.

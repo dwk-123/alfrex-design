@@ -103,7 +103,10 @@ Do this even for inline dates, percentages, and measurements. IDs are always Mon
 
 - 4px base spacing: 4, 8, 12, 14, 18, 24, and 32px.
 - 32px page gutter, 18px card padding, 14px grid gap, 8px inline gap.
-- Radius: 6px status, 9px control, 12px card, 16px modal.
+- Radius: 6px status, 9px interactive control, 12px card, 16px modal.
+- Compact non-interactive tags use 5px. An 18px count badge may be circular for
+  one digit or capsule-shaped for multiple digits; the capsule prohibition
+  applies to buttons and controls, not counters.
 - Toast shadow: `0 14px 34px rgba(15,18,25,.30)`.
 - Modal shadow: `0 24px 60px rgba(15,18,25,.28)`.
 - No shadow on cards, tables, inputs, nav rails, or fixed page chrome.

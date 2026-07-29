@@ -74,9 +74,11 @@
   --alfrex-shadow-toast: 0 14px 34px rgba(15, 18, 25, .30);
   --alfrex-shadow-modal: 0 24px 60px rgba(15, 18, 25, .28);
 
-  /* next/font must expose these two differently named variables. */
-  --alfrex-font-sans: var(--font-plex-sans), 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
-  --alfrex-font-mono: var(--font-plex-mono), 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+  /* next/font must expose these two differently named variables. Keep the
+     first fallback inside var() so a missing next/font variable cannot
+     invalidate the entire font-family value. */
+  --alfrex-font-sans: var(--font-plex-sans, 'IBM Plex Sans'), system-ui, -apple-system, sans-serif;
+  --alfrex-font-mono: var(--font-plex-mono, 'IBM Plex Mono'), ui-monospace, 'SF Mono', monospace;
 }
 
 .dark {
@@ -142,13 +144,17 @@
   --secondary-foreground: var(--alfrex-text-strong);
   --muted: var(--alfrex-bg-inset);
   --muted-foreground: var(--alfrex-text-muted);
-  --accent: var(--alfrex-brand-wash);
-  --accent-foreground: var(--alfrex-brand-pressed);
+  /* Stock shadcn uses accent for ordinary menu and command-row highlights.
+     Brand wash is applied explicitly only to active navigation. */
+  --accent: var(--alfrex-bg-inset);
+  --accent-foreground: var(--alfrex-text-strong);
   --destructive: var(--alfrex-brand);
   --destructive-foreground: var(--alfrex-on-ink);
   --border: var(--alfrex-border-card);
   --input: var(--alfrex-border-control);
-  --ring: var(--alfrex-border-control);
+  /* Stock focus rings render this at 50% opacity; strong text keeps the
+     resulting neutral indicator visible against both light and dark surfaces. */
+  --ring: var(--alfrex-text-strong);
   --chart-1: var(--alfrex-planning-solid);
   --chart-2: var(--alfrex-pending-solid);
   --chart-3: var(--alfrex-booked-solid);
@@ -159,10 +165,10 @@
   --sidebar-foreground: var(--alfrex-text-strong);
   --sidebar-primary: var(--alfrex-ink);
   --sidebar-primary-foreground: var(--alfrex-on-ink);
-  --sidebar-accent: var(--alfrex-brand-wash);
-  --sidebar-accent-foreground: var(--alfrex-brand-pressed);
+  --sidebar-accent: var(--alfrex-bg-inset);
+  --sidebar-accent-foreground: var(--alfrex-text-strong);
   --sidebar-border: var(--alfrex-hairline);
-  --sidebar-ring: var(--alfrex-border-control);
+  --sidebar-ring: var(--alfrex-text-strong);
 }
 
 @theme inline {

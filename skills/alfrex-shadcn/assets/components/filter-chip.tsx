@@ -6,7 +6,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const filterChipVariants = cva(
-  "inline-flex h-8 shrink-0 items-center justify-center rounded-[7px] border px-[13px] text-[12.5px] font-medium whitespace-nowrap outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex h-8 shrink-0 items-center justify-center rounded-[var(--alfrex-r-control)] border px-[13px] text-[12.5px] font-medium whitespace-nowrap outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       active: {

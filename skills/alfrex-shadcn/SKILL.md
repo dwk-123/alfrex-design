@@ -74,7 +74,8 @@ Before calling work complete:
    `--font-sans` directly.
 5. Copied component sources compile without consumer-specific imports.
 6. Light and dark show neutral primary, six readable statuses, border-defined
-   cards, active red nav treatment, and Mono figures.
+   cards, active red nav treatment, neutral stock item highlights, visible
+   keyboard focus, and Mono figures.
 7. `npm run build` passes.
 8. For migrations, no dark toggle exists while any reachable `.als-*` screen
    remains.

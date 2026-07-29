@@ -21,9 +21,9 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-[var(--alfrex-brand-pressed)] focus-visible:border-destructive focus-visible:ring-destructive/30",
         link:
-          "h-auto rounded-none border-0 p-0 text-[var(--alfrex-xlink-fg)] underline-offset-4 hover:underline",
+          "h-auto rounded-none border-0 p-0 text-[var(--alfrex-xlink-fg)] underline-offset-4 hover:underline disabled:bg-transparent",
         xlink:
-          "bg-[var(--alfrex-xlink-bg)] text-[var(--alfrex-xlink-fg)] hover:brightness-95",
+          "bg-[var(--alfrex-xlink-bg)] text-[var(--alfrex-xlink-fg)] hover:brightness-95 disabled:bg-transparent",
       },
       size: {
         default:
@@ -31,7 +31,8 @@ const buttonVariants = cva(
         xs: "h-6 gap-1 px-2 text-xs [&_svg:not([class*='size-'])]:size-3",
         sm: "h-8 gap-1.5 px-3 text-xs [&_svg:not([class*='size-'])]:size-3.5",
         lg: "h-10 gap-2 px-5 text-sm",
-        mini: "h-auto gap-1.5 rounded-[7px] px-[11px] py-1.5 text-xs",
+        mini:
+          "h-auto gap-1.5 rounded-[var(--alfrex-r-control)] px-[11px] py-1.5 text-xs",
         icon: "size-[38px]",
         "icon-xs": "size-6 [&_svg:not([class*='size-'])]:size-3",
         "icon-sm": "size-8 [&_svg:not([class*='size-'])]:size-3.5",

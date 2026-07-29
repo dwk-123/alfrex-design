@@ -11,7 +11,7 @@ const navItemVariants = cva(
       active: {
         false: "hover:bg-muted hover:text-foreground",
         true:
-          "border-l-[var(--alfrex-brand)] bg-accent font-semibold text-accent-foreground hover:bg-accent",
+          "border-l-[var(--alfrex-brand)] bg-[var(--alfrex-brand-wash)] font-semibold text-[var(--alfrex-brand-pressed)] hover:bg-[var(--alfrex-brand-wash)]",
       },
     },
     defaultVariants: { active: false },
