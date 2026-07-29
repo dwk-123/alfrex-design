@@ -1,6 +1,8 @@
 ---
 name: design-sync
 description: Push this repo's design system to the claude.ai/design project with the DesignSync tool — what maps where, and the incremental sync workflow. Use when asked to sync, publish, or update the Claude Design project.
+metadata:
+  internal: true
 ---
 
 # Syncing to claude.ai/design

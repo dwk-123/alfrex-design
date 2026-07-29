@@ -1,6 +1,8 @@
 ---
 name: component-authoring
 description: How to add or change a component in the Alfrex design repo — file layout, the @dsCard preview convention, and the review loop. Use when creating, editing, or refactoring anything under components/ or design-system/.
+metadata:
+  internal: true
 ---
 
 # Authoring components
