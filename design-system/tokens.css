@@ -11,6 +11,7 @@
   --alfrex-brand-pressed:  #C9151C;  /* active nav text / hover */
   --alfrex-brand-wash:     #FCEAEB;  /* active nav background */
   --alfrex-ink:            #1B1C20;  /* PRIMARY action + headings (not red) */
+  --alfrex-on-ink:         #FFFFFF;  /* content on ink / committing actions */
 
   /* ---- Surfaces -------------------------------------------- */
   --alfrex-bg-app:         #EEEFF2;  /* page background */
@@ -39,6 +40,10 @@
   --alfrex-alert-bg:       #FBE5E6;  --alfrex-alert-fg:       #C01620;  --alfrex-alert-solid:       #E1444C;
   /* secondary tag used for consolidated / new */
   --alfrex-tag-bg:         #ECE7FB;  --alfrex-tag-fg:         #5B46C4;
+
+  /* ---- Cross-record links ---------------------------------- */
+  --alfrex-xlink-bg:       #EAF1FC;
+  --alfrex-xlink-fg:       #2A5BB8;
 
   /* ---- Radius ---------------------------------------------- */
   --alfrex-r-pill:    6px;
@@ -69,3 +74,51 @@
    IBM Plex Sans 400/500/600/700 · IBM Plex Mono 400/500/600
    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 */
+
+/* ============================================================
+   Dark palette
+   Apply .dark to an app root. Text values are tuned so even the
+   faint and disabled ramps retain at least 4.5:1 on bg-inset.
+   ============================================================ */
+.dark {
+  /* ---- Brand ------------------------------------------------ */
+  --alfrex-brand:          #F04349;
+  --alfrex-brand-pressed:  #F7686D;
+  --alfrex-brand-wash:     #33171A;
+  --alfrex-ink:            #F2F3F5;  /* paper ink: neutral primary flips light */
+  --alfrex-on-ink:         #16171B;
+
+  /* ---- Surfaces -------------------------------------------- */
+  --alfrex-bg-app:         #131418;
+  --alfrex-bg-inset:       #22242A;
+  --alfrex-bg-card:        #1C1E23;
+
+  /* ---- Lines ----------------------------------------------- */
+  --alfrex-border-card:    #2C2F36;
+  --alfrex-border-control: #3A3D45;
+  --alfrex-hairline:       #262930;
+  --alfrex-hairline-row:   #22242A;
+
+  /* ---- Text ------------------------------------------------ */
+  --alfrex-text-strong:    #F2F3F5;
+  --alfrex-text:           #C6C9CF;
+  --alfrex-text-muted:     #9398A1;
+  --alfrex-text-faint:     #8E929B;
+  --alfrex-text-disabled:  #878B94;
+
+  /* ---- Status ---------------------------------------------- */
+  --alfrex-planning-bg:    #262930;  --alfrex-planning-fg:    #A9AEB8;  --alfrex-planning-solid:    #7D838D;
+  --alfrex-pending-bg:     #332A17;  --alfrex-pending-fg:     #E5B45D;  --alfrex-pending-solid:     #D89C3D;
+  --alfrex-booked-bg:      #182440;  --alfrex-booked-fg:      #7FA6EC;  --alfrex-booked-solid:      #5C88DC;
+  --alfrex-transit-bg:     #241E3D;  --alfrex-transit-fg:     #A491F0;  --alfrex-transit-solid:     #8B76E4;
+  --alfrex-delivered-bg:   #14291C;  --alfrex-delivered-fg:   #5FC98A;  --alfrex-delivered-solid:   #4BAE6F;
+  --alfrex-alert-bg:       #351719;  --alfrex-alert-fg:       #F1747A;  --alfrex-alert-solid:       #E5555C;
+  --alfrex-tag-bg:         #241E3D;  --alfrex-tag-fg:         #A491F0;
+
+  /* ---- Cross-record links ---------------------------------- */
+  --alfrex-xlink-bg:       #182440;
+  --alfrex-xlink-fg:       #7FA6EC;
+
+  /* ---- Elevation ------------------------------------------- */
+  --alfrex-scrim:          rgba(0,0,0,.58);
+}

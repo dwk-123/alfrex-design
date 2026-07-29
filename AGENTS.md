@@ -1,41 +1,92 @@
 # AGENTS.md
 
-Central home of the **Alfrex design system** — the house style for Alfrex USA's
-internal apps (Sample-Manager, Quote-Manager, Spec, Sales tools). This repo is the
-source of truth; apps consume it, they don't fork it. It syncs to a claude.ai/design
-project via the `DesignSync` tool.
+Central home and distribution point for the **Alfrex design system** — the
+house style for Alfrex USA internal apps. This public repo is served through the
+skills CLI from `github.com/dwk-123/alfrex-design`.
 
-## Source of truth
+## Two supported layers
 
-- `design-system/tokens.css` — every color, type, spacing, radius, elevation value.
-  If a value isn't here, it doesn't belong in any Alfrex UI.
-- `design-system/components.css` — canonical `.als-*` component classes.
-- `design-system/design-system.md` — the rules and when-to-use guidance.
-- `components/` — one directory per component: a self-contained HTML preview
-  (first line `<!-- @dsCard group="…" -->`) that renders the component from the
-  shared CSS. These are what DesignSync uploads as Design System pane cards.
+### `skills/` — current, shareable shadcn expression
 
-Prose never overrides code: if this file or a skill disagrees with `tokens.css`,
-the CSS wins — fix the prose.
+`npx skills add dwk-123/alfrex-design` discovers and installs:
 
-## Things agents get wrong here
+- `alfrex-design-language` — framework-agnostic identity, tokens, typography,
+  archetypes, voice, and non-negotiables.
+- `alfrex-shadcn` — Next 16 + Tailwind v4 + shadcn v4 (`base-nova`, Base UI)
+  theme, source recipes, setup, and `.als-*` migration guidance.
 
-- **Primary buttons are ink `#1B1C20`, never brand red.** Red (`#E11B22`) is
-  identity, active nav, alerts, and the single money-committing action only.
-- **Every number is IBM Plex Mono** — IDs, money, weights, dates, percentages.
-  Two fonts total (Plex Sans + Plex Mono); don't introduce a third.
-- Borders define surfaces, not shadows. Shadow only on things that float
-  (modal, toast).
-- There is no build system and none should be added. Plain CSS + static HTML
-  previews, viewable by opening the file.
-- The seed files were imported from `~/Projects/Sample-Manager/design-system/`
-  on 2026-07-29. Sample-Manager's separate `DESIGN.md` disagrees with them
-  (red `#EC1B2F` vs `#E11B22`, system fonts vs IBM Plex) — this repo's
-  `tokens.css` is canonical; treat that DESIGN.md as stale.
+The skills carry source assets; consumers copy those assets into their apps and
+build them there. This repo has no build step.
 
-## Skills
+### `design-system/` — legacy `.als-*` compatibility layer
 
-- `alfrex-design-language` — the house style: load before designing or reviewing
-  any Alfrex UI.
-- `component-authoring` — how to add or change a component in this repo.
-- `design-sync` — how to push components to the claude.ai design project.
+- `tokens.css` — framework-agnostic light/dark primitives.
+- `components.css` — canonical `.als-*` classes.
+- `design-system.md` — legacy usage guidance.
+
+This layer is kept for existing consumers and is **additive-only**. Do not
+rename/remove selectors or redesign their geometry. New shadcn work belongs in
+`skills/alfrex-shadcn/`; legacy classes are added only when an existing consumer
+already proved the shared need.
+
+`components/` contains buildless HTML previews whose first line is
+`<!-- @dsCard group="…" -->`. They remain compatible with the separate
+DesignSync workflow.
+
+## Token synchronization rule
+
+A token value has three maintained representations:
+
+1. `design-system/tokens.css`
+2. `skills/alfrex-shadcn/assets/alfrex-theme.css`
+3. the token tables in `skills/alfrex-design-language/SKILL.md`
+
+Any token addition or value change must update all three in the same commit.
+Code wins over prose, but a mismatch is a bug to fix immediately.
+
+## Things agents get wrong
+
+- **Primary buttons are neutral ink, never brand red.** Red is identity, active
+  nav, alerts, and the single money-committing action only.
+- **Dark primary flips to paper ink.** `--alfrex-ink` becomes `#F2F3F5` and its
+  foreground becomes `#16171B`; it still never becomes red.
+- **Every number is IBM Plex Mono** — IDs, money, weights, dates, dimensions,
+  and percentages. UI/prose is IBM Plex Sans. Do not introduce a third font.
+- Borders define surfaces. Shadows are only for floating modal/toast layers.
+- There are exactly six status families: planning, pending, booked, transit,
+  delivered, alert. Do not invent another color.
+- The shadcn stack is `base-nova` on **Base UI**, not Radix; base color neutral,
+  CSS variables enabled, Lucide icons.
+- Do not reintroduce copied token forks, an npm package, or consumer-local theme
+  edits. Fix shared source here.
+- There is no repo build. Static previews open directly; consumers compile the
+  copied TSX/CSS.
+
+The seed legacy files came from Sample Manager on 2026-07-29. Sample Manager's
+separate `DESIGN.md` is stale where it disagrees (`#EC1B2F`, system fonts). This
+repo's synchronized tokens are canonical.
+
+## Internal-only skills
+
+- `.claude/skills/component-authoring/` — preview and additive legacy authoring.
+- `.claude/skills/design-sync/` — optional claude.ai/design synchronization.
+
+The two shareable skills are canonical under `skills/`; `.claude/skills/`
+contains symlinks to them so local agents use the same copy the CLI distributes.
+
+## Release workflow
+
+1. Make and verify synchronized source changes.
+2. Run the consumer dry-run when setup, theme, or component assets change.
+3. Commit and push `main` to `dwk-123/alfrex-design`.
+4. Consumers run:
+
+   ```bash
+   npx skills update alfrex-design-language alfrex-shadcn -p -y
+   ```
+
+5. Consumers inspect diffs and recopy updated source assets into their app.
+
+A hosted shadcn registry (`registry.json`) is a possible future distribution
+option, but it is intentionally deferred. Do not add one unless explicitly
+requested.

@@ -1,0 +1,260 @@
+<!-- @dsCard group="Colors" -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alfrex light and dark palettes</title>
+  <link rel="stylesheet" href="../../design-system/tokens.css">
+  <link rel="stylesheet" href="../../design-system/components.css">
+  <style>
+    * { box-sizing: border-box; }
+    html { background: var(--alfrex-bg-app); }
+    body { margin: 0; min-width: 320px; font-family: var(--alfrex-font-sans); color: var(--alfrex-text-strong); }
+    button { font: inherit; }
+    .preview-shell { padding: var(--alfrex-sp-8); }
+    .preview-head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--alfrex-sp-6); max-width: 1500px; margin: 0 auto var(--alfrex-sp-6); }
+    .eyebrow { margin: 0 0 var(--alfrex-sp-2); color: var(--alfrex-brand); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: 26px; line-height: 1.1; letter-spacing: -.02em; }
+    .intro { max-width: 620px; margin: var(--alfrex-sp-2) 0 0; color: var(--alfrex-text-muted); font-size: 13px; line-height: 1.5; }
+    .gate { flex: 0 0 auto; padding: var(--alfrex-sp-2) var(--alfrex-sp-3); border: 1px solid var(--alfrex-border-card); border-radius: var(--alfrex-r-control); background: var(--alfrex-bg-card); color: var(--alfrex-text-muted); font-size: 12px; font-weight: 600; }
+    .comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 1500px; margin: 0 auto; border: 1px solid var(--alfrex-border-control); border-radius: var(--alfrex-r-modal); overflow: hidden; }
+    .theme-panel { min-width: 0; padding: var(--alfrex-sp-6); background: var(--alfrex-bg-app); color: var(--alfrex-text-strong); }
+    .theme-panel + .theme-panel { border-left: 1px solid var(--alfrex-border-control); }
+    .theme-panel.dark { color-scheme: dark; }
+    .panel-head { display: flex; align-items: center; justify-content: space-between; gap: var(--alfrex-sp-3); margin-bottom: var(--alfrex-sp-6); }
+    .panel-title { display: flex; align-items: center; gap: var(--alfrex-sp-3); }
+    .mode-mark { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--alfrex-border-card); border-radius: var(--alfrex-r-control); background: var(--alfrex-bg-card); color: var(--alfrex-text-strong); font-family: var(--alfrex-font-mono); font-size: 13px; font-weight: 600; }
+    h2 { margin: 0; font-size: 17px; line-height: 1.2; }
+    .mode-note { margin: 3px 0 0; color: var(--alfrex-text-faint); font-size: 11px; }
+    .contrast-pass { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: var(--alfrex-r-pill); background: var(--alfrex-delivered-bg); color: var(--alfrex-delivered-fg); font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .contrast-pass::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--alfrex-delivered-solid); }
+    .section { margin-top: var(--alfrex-sp-6); }
+    .section:first-of-type { margin-top: 0; }
+    .section-label { margin: 0 0 var(--alfrex-sp-3); color: var(--alfrex-text-faint); font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .surface-grid, .brand-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--alfrex-sp-2); }
+    .swatch { min-width: 0; min-height: 74px; display: flex; flex-direction: column; justify-content: flex-end; padding: var(--alfrex-sp-3); border: 1px solid var(--alfrex-border-card); border-radius: var(--alfrex-r-control); }
+    .swatch strong { font-size: 11px; font-weight: 600; }
+    .swatch code { margin-top: 3px; color: var(--alfrex-text-faint); font-family: var(--alfrex-font-mono); font-size: 9.5px; }
+    .surface-app { background: var(--alfrex-bg-app); }
+    .surface-card { background: var(--alfrex-bg-card); }
+    .surface-inset { background: var(--alfrex-bg-inset); }
+    .brand-main { background: var(--alfrex-brand); color: var(--alfrex-on-ink); border-color: transparent; }
+    .brand-main code, .brand-pressed code { color: inherit; opacity: .76; }
+    .brand-pressed { background: var(--alfrex-brand-pressed); color: var(--alfrex-on-ink); border-color: transparent; }
+    .brand-wash { background: var(--alfrex-brand-wash); color: var(--alfrex-brand-pressed); border-color: transparent; }
+    .brand-wash code { color: inherit; opacity: .8; }
+    .text-ramp { overflow: hidden; border: 1px solid var(--alfrex-border-card); border-radius: var(--alfrex-r-control); background: var(--alfrex-bg-card); }
+    .text-row { display: grid; grid-template-columns: 80px minmax(0, 1fr); align-items: baseline; gap: var(--alfrex-sp-3); min-width: 0; padding: 9px var(--alfrex-sp-3); border-bottom: 1px solid var(--alfrex-hairline-row); }
+    .text-row:last-child { border-bottom: 0; }
+    .text-row code { color: inherit; font-family: var(--alfrex-font-mono); font-size: 9.5px; opacity: .85; }
+    .text-row span { min-width: 0; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .text-strong { color: var(--alfrex-text-strong); font-weight: 600; }
+    .text-body { color: var(--alfrex-text); }
+    .text-muted { color: var(--alfrex-text-muted); }
+    .text-faint { color: var(--alfrex-text-faint); }
+    .text-disabled { color: var(--alfrex-text-disabled); }
+    .pill-row, .button-row { display: flex; flex-wrap: wrap; gap: var(--alfrex-sp-2); }
+    .status-pill { display: inline-flex; align-items: center; gap: 6px; padding: 5px 9px; border-radius: var(--alfrex-r-pill); font-size: 10.5px; font-weight: 650; white-space: nowrap; }
+    .status-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .75; }
+    .planning { background: var(--alfrex-planning-bg); color: var(--alfrex-planning-fg); }
+    .pending { background: var(--alfrex-pending-bg); color: var(--alfrex-pending-fg); }
+    .booked { background: var(--alfrex-booked-bg); color: var(--alfrex-booked-fg); }
+    .transit { background: var(--alfrex-transit-bg); color: var(--alfrex-transit-fg); }
+    .delivered { background: var(--alfrex-delivered-bg); color: var(--alfrex-delivered-fg); }
+    .alert { background: var(--alfrex-alert-bg); color: var(--alfrex-alert-fg); }
+    .preview-button { height: 36px; display: inline-flex; align-items: center; justify-content: center; padding: 0 var(--alfrex-sp-4); border: 1px solid transparent; border-radius: var(--alfrex-r-control); font-size: 12px; font-weight: 650; }
+    .button-primary { background: var(--alfrex-ink); color: var(--alfrex-on-ink); }
+    .button-outline { background: var(--alfrex-bg-card); color: var(--alfrex-text); border-color: var(--alfrex-border-control); }
+    .button-commit { background: var(--alfrex-brand); color: var(--alfrex-on-ink); }
+    .button-xlink { background: var(--alfrex-xlink-bg); color: var(--alfrex-xlink-fg); }
+    .mock-card { overflow: hidden; border: 1px solid var(--alfrex-border-card); border-radius: var(--alfrex-r-card); background: var(--alfrex-bg-card); }
+    .mock-head { display: flex; align-items: center; justify-content: space-between; gap: var(--alfrex-sp-3); padding: var(--alfrex-sp-3) var(--alfrex-sp-5); border-bottom: 1px solid var(--alfrex-hairline); }
+    .mock-title { margin: 0; font-size: 13px; font-weight: 650; }
+    .mock-note { color: var(--alfrex-text-faint); font-size: 10.5px; }
+    .table-head, .table-row { display: grid; grid-template-columns: minmax(100px, 1.2fr) minmax(86px, .8fr) minmax(70px, .7fr); align-items: center; gap: var(--alfrex-sp-3); min-width: 0; padding: 0 var(--alfrex-sp-5); }
+    .table-head { min-height: 34px; background: var(--alfrex-bg-inset); color: var(--alfrex-text-faint); font-size: 9.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .table-row { min-height: 48px; border-top: 1px solid var(--alfrex-hairline-row); color: var(--alfrex-text); font-size: 11.5px; }
+    .table-head span:last-child, .table-row span:last-child { text-align: right; }
+    .record { min-width: 0; overflow: hidden; color: var(--alfrex-text-strong); font-family: var(--alfrex-font-mono); font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+    .money { color: var(--alfrex-text-strong); font-family: var(--alfrex-font-mono); font-weight: 600; font-variant-numeric: tabular-nums; }
+    @media (max-width: 900px) {
+      .preview-shell { padding: var(--alfrex-sp-4); }
+      .preview-head { align-items: flex-start; flex-direction: column; }
+      .comparison { grid-template-columns: minmax(0, 1fr); }
+      .theme-panel + .theme-panel { border-top: 1px solid var(--alfrex-border-control); border-left: 0; }
+    }
+    @media (max-width: 520px) {
+      .theme-panel { padding: var(--alfrex-sp-4); }
+      .panel-head { align-items: flex-start; }
+      .contrast-pass { display: none; }
+      .surface-grid, .brand-grid { grid-template-columns: minmax(0, 1fr); }
+      .swatch { min-height: 62px; }
+      .table-head, .table-row { grid-template-columns: minmax(90px, 1fr) minmax(72px, .8fr); }
+      .table-head span:nth-child(2), .table-row span:nth-child(2) { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="preview-shell">
+    <header class="preview-head">
+      <div>
+        <p class="eyebrow">Alfrex operations</p>
+        <h1>Light and dark palette</h1>
+        <p class="intro">A quiet instrument-panel foundation: neutral primary actions, one red accent, and the same six operational states in either mode.</p>
+      </div>
+      <div class="gate">Palette review · migration gate 1</div>
+    </header>
+
+    <div class="comparison">
+      <section class="theme-panel" aria-labelledby="light-title">
+        <header class="panel-head">
+          <div class="panel-title">
+            <span class="mode-mark">L</span>
+            <div>
+              <h2 id="light-title">Light</h2>
+              <p class="mode-note">Existing canonical palette</p>
+            </div>
+          </div>
+          <span class="contrast-pass">canonical source</span>
+        </header>
+
+        <section class="section">
+          <h3 class="section-label">Surfaces</h3>
+          <div class="surface-grid">
+            <div class="swatch surface-app"><strong>App</strong><code>#EEEFF2</code></div>
+            <div class="swatch surface-card"><strong>Card</strong><code>#FFFFFF</code></div>
+            <div class="swatch surface-inset"><strong>Inset</strong><code>#F8F9FB</code></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h3 class="section-label">Text ramp</h3>
+          <div class="text-ramp">
+            <div class="text-row text-strong"><code>strong</code><span>Order SO-10482 is ready</span></div>
+            <div class="text-row text-body"><code>body</code><span>Pickup scheduled for July 31</span></div>
+            <div class="text-row text-muted"><code>muted</code><span>Alfrex USA · Buford, GA</span></div>
+            <div class="text-row text-faint"><code>faint</code><span>Last updated 14:32</span></div>
+            <div class="text-row text-disabled"><code>disabled</code><span>Export unavailable</span></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h3 class="section-label">Operational status</h3>
+          <div class="pill-row">
+            <span class="status-pill planning">Planning</span>
+            <span class="status-pill pending">Pending</span>
+            <span class="status-pill booked">Booked</span>
+            <span class="status-pill transit">In transit</span>
+            <span class="status-pill delivered">Delivered</span>
+            <span class="status-pill alert">Alert</span>
+          </div>
+        </section>
+
+        <section class="section">
+          <h3 class="section-label">Brand trio</h3>
+          <div class="brand-grid">
+            <div class="swatch brand-main"><strong>Brand</strong><code>#E11B22</code></div>
+            <div class="swatch brand-pressed"><strong>Pressed</strong><code>#C9151C</code></div>
+            <div class="swatch brand-wash"><strong>Wash</strong><code>#FCEAEB</code></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h3 class="section-label">Actions</h3>
+          <div class="button-row">
+            <button class="preview-button button-primary">Create quote</button>
+            <button class="preview-button button-outline">Cancel</button>
+            <button class="preview-button button-commit">Book freight</button>
+            <button class="preview-button button-xlink">Open order</button>
+          </div>
+        </section>
+
+        <section class="section">
+          <h3 class="section-label">Card + table</h3>
+          <div class="mock-card">
+            <div class="mock-head"><h4 class="mock-title">Attention queue</h4><span class="mock-note">2 shipments</span></div>
+            <div class="table-head"><span>Shipment</span><span>Status</span><span>Value</span></div>
+            <div class="table-row"><span class="record">SHP-24178</span><span><span class="status-pill pending">Pending</span></span><span class="money">$8,420.00</span></div>
+            <div class="table-row"><span class="record">SHP-24164</span><span><span class="status-pill transit">In transit</span></span><span class="money">$12,775.00</span></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="theme-panel dark" aria-labelledby="dark-title">
+        <header class="panel-head">
+          <div class="panel-title">
+            <span class="mode-mark">D</span>
+            <div>
+              <h2 id="dark-title">Dark</h2>
+              <p class="mode-note">Proposed Alfrex palette</p>
+            </div>
+          </div>
+          <span class="contrast-pass">all text ≥ 4.5:1</span>
+        </header>
+
+        <section class="section">
+          <h3 class="section-label">Surfaces</h3>
+          <div class="surface-grid">
+            <div class="swatch surface-app"><strong>App</strong><code>#131418</code></div>
+            <div class="swatch surface-card"><strong>Card</strong><code>#1C1E23</code></div>
+            <div class="swatch surface-inset"><strong>Inset</strong><code>#22242A</code></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h3 class="section-label">Text ramp</h3>
+          <div class="text-ramp">
+            <div class="text-row text-strong"><code>strong</code><span>Order SO-10482 is ready</span></div>
+            <div class="text-row text-body"><code>body</code><span>Pickup scheduled for July 31</span></div>
+            <div class="text-row text-muted"><code>muted</code><span>Alfrex USA · Buford, GA</span></div>
+            <div class="text-row text-faint"><code>faint</code><span>Last updated 14:32</span></div>
+            <div class="text-row text-disabled"><code>disabled</code><span>Export unavailable</span></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h3 class="section-label">Operational status</h3>
+          <div class="pill-row">
+            <span class="status-pill planning">Planning</span>
+            <span class="status-pill pending">Pending</span>
+            <span class="status-pill booked">Booked</span>
+            <span class="status-pill transit">In transit</span>
+            <span class="status-pill delivered">Delivered</span>
+            <span class="status-pill alert">Alert</span>
+          </div>
+        </section>
+
+        <section class="section">
+          <h3 class="section-label">Brand trio</h3>
+          <div class="brand-grid">
+            <div class="swatch brand-main"><strong>Brand</strong><code>#F04349</code></div>
+            <div class="swatch brand-pressed"><strong>Pressed</strong><code>#F7686D</code></div>
+            <div class="swatch brand-wash"><strong>Wash</strong><code>#33171A</code></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h3 class="section-label">Actions</h3>
+          <div class="button-row">
+            <button class="preview-button button-primary">Create quote</button>
+            <button class="preview-button button-outline">Cancel</button>
+            <button class="preview-button button-commit">Book freight</button>
+            <button class="preview-button button-xlink">Open order</button>
+          </div>
+        </section>
+
+        <section class="section">
+          <h3 class="section-label">Card + table</h3>
+          <div class="mock-card">
+            <div class="mock-head"><h4 class="mock-title">Attention queue</h4><span class="mock-note">2 shipments</span></div>
+            <div class="table-head"><span>Shipment</span><span>Status</span><span>Value</span></div>
+            <div class="table-row"><span class="record">SHP-24178</span><span><span class="status-pill pending">Pending</span></span><span class="money">$8,420.00</span></div>
+            <div class="table-row"><span class="record">SHP-24164</span><span><span class="status-pill transit">In transit</span></span><span class="money">$12,775.00</span></div>
+          </div>
+        </section>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

@@ -22,7 +22,7 @@
 .als-btn--ghost:hover { background:#F6F7F9; }
 .als-btn--danger { background:var(--alfrex-brand); color:#fff; }   /* money-committing only (Book) */
 .als-btn--danger:hover { background:var(--alfrex-brand-pressed); }
-.als-btn--xlink { background:#EAF1FC; color:#2A5BB8; border-color:#CDDDF6; }  /* cross-record link */
+.als-btn--xlink { background:var(--alfrex-xlink-bg); color:var(--alfrex-xlink-fg); border-color:#CDDDF6; }  /* cross-record link */
 .als-btn--link { height:auto; padding:0; background:none; border:none; color:#2A5BB8; }
 .als-btn--mini { height:auto; font-size:12px; padding:6px 11px; border-radius:7px;
   background:#fff; color:var(--alfrex-text); border-color:var(--alfrex-border-control); }
@@ -91,6 +91,9 @@
 .als-row:hover { background:#FBFBFC; }
 .als-num { font-family:var(--alfrex-font-mono); text-align:right; }     /* numeric cells */
 
+/* Archetype primitive: tables scroll sideways on narrow viewports instead of crushing. */
+.als-table-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
 /* ---- Nav rail ------------------------------------------------- */
 .als-nav-item { display:flex; align-items:center; gap:11px; width:100%; padding:9px 13px; margin-bottom:2px;
   border:none; border-left:3px solid transparent; border-radius:8px; background:transparent;
@@ -122,3 +125,79 @@
 .als-modal--native::backdrop { background:var(--alfrex-scrim); }
 .als-toast { position:fixed; bottom:26px; right:26px; z-index:60; display:flex; align-items:center; gap:12px;
   background:var(--alfrex-ink); color:#fff; padding:13px 17px; border-radius:11px; box-shadow:var(--alfrex-shadow-toast); }
+.als-toast-viewport { position:fixed; bottom:26px; right:26px; z-index:60;
+  display:flex; flex-direction:column; gap:10px; }
+
+/* ---- Read-only field ------------------------------------------
+   Label/value pair for detail records. Add --mono to the value for
+   any number, ID, date, or duration.
+   <div class="als-field"><span class="als-field__label">Bid date</span>
+     <span class="als-field__value als-field__value--mono">Aug 18, 2026</span></div> */
+.als-field { display:flex; flex-direction:column; gap:4px; min-width:0; }
+.als-field__label { font-size:11px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+  color:var(--alfrex-text-faint); }
+.als-field__value { font-size:13.5px; color:var(--alfrex-text); overflow-wrap:anywhere; }
+.als-field__value--mono { font-family:var(--alfrex-font-mono); font-variant-numeric:tabular-nums; }
+
+/* ---- Textarea -------------------------------------------------
+   Matches .als-input but grows; .als-input's fixed 38px height is
+   wrong for multi-line entry.                                     */
+.als-textarea { width:100%; min-height:78px; padding:10px 12px; font-family:var(--alfrex-font-sans);
+  font-size:14px; line-height:1.45; color:var(--alfrex-text-strong); background:#fff;
+  border:1px solid var(--alfrex-border-control); border-radius:var(--alfrex-r-control);
+  outline:none; resize:vertical; }
+.als-textarea:focus { border-color:#B8BBC3; }
+
+/* ---- Inline alert ---------------------------------------------
+   Form and mutation errors. Always pairs an icon or word with the
+   tint, so state is never carried by color alone.                 */
+.als-alert { display:flex; align-items:flex-start; gap:9px; padding:11px 13px; font-size:13px;
+  border-radius:var(--alfrex-r-control); }
+.als-alert--error { background:var(--alfrex-alert-bg); color:var(--alfrex-alert-fg); }
+.als-alert--info { background:var(--alfrex-bg-inset); color:var(--alfrex-text-muted);
+  border:1px solid var(--alfrex-border-card); }
+
+/* ---- Empty state ----------------------------------------------
+   Name the next action rather than apologising.                   */
+.als-empty { padding:34px 18px; text-align:center; font-size:13.5px; color:var(--alfrex-text-muted); }
+
+/* ---- Data preview ---------------------------------------------
+   Read-only, dynamically-columned data such as an export preview.
+   Wide screens scroll inside the card; narrow screens deliberately
+   stack every cell with its label rather than clipping columns.    */
+.als-data-preview { max-width:100%; overflow-x:auto; }
+.als-data-preview__table { width:max-content; min-width:100%; border-collapse:collapse; }
+.als-data-preview__table th { min-width:168px; max-width:260px; padding:11px 14px; text-align:left;
+  vertical-align:bottom; background:var(--alfrex-bg-inset); border-bottom:1px solid var(--alfrex-hairline);
+  font-size:11px; font-weight:600; color:var(--alfrex-text-muted); }
+.als-data-preview__table th span, .als-data-preview__table th code { display:block; }
+.als-data-preview__table th code { margin-top:3px; font-family:var(--alfrex-font-mono); font-size:10px;
+  font-weight:500; color:var(--alfrex-text-faint); text-transform:none; }
+.als-data-preview__table td { min-width:168px; max-width:260px; padding:11px 14px;
+  border-bottom:1px solid var(--alfrex-hairline-row); font-family:var(--alfrex-font-mono);
+  font-size:11.5px; color:var(--alfrex-text); vertical-align:top; }
+.als-data-preview__table td > span { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.als-data-preview__blank { color:var(--alfrex-text-faint); font-family:var(--alfrex-font-sans); font-style:italic; }
+
+/* ---- Narrow screens -------------------------------------------
+   Dense --cols tables and data previews get a deliberate stacked
+   layout instead of silent clipping.                              */
+@media (max-width:899px) {
+  .als-thead { display:none; }
+  .als-row { grid-template-columns:1fr; gap:6px; padding:14px 16px; min-height:0; }
+  .als-row > [data-label]::before { content:attr(data-label) " · "; font-size:11px; font-weight:600;
+    letter-spacing:.04em; text-transform:uppercase; color:var(--alfrex-text-faint); }
+  .als-num { text-align:left; }
+
+  .als-data-preview { overflow:visible; }
+  .als-data-preview__table, .als-data-preview__table tbody,
+  .als-data-preview__table tr, .als-data-preview__table td { display:block; width:100%; }
+  .als-data-preview__table thead { position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  .als-data-preview__table tr { padding:8px 14px; border-bottom:1px solid var(--alfrex-hairline); }
+  .als-data-preview__table td { display:grid; grid-template-columns:minmax(112px,.42fr) minmax(0,1fr);
+    gap:10px; min-width:0; max-width:none; padding:7px 0; border:0; }
+  .als-data-preview__table td::before { content:attr(data-label); font-family:var(--alfrex-font-sans);
+    font-size:10.5px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--alfrex-text-faint); }
+}
