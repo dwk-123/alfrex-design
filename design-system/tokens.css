@@ -1,0 +1,71 @@
+/* ============================================================
+   Alfrex Operations — Design Tokens
+   The single source of truth for color, type, spacing, radius,
+   elevation. Import this once at the app root, then reference
+   var(--…) everywhere. Do not hard-code hex values in components.
+   ============================================================ */
+
+:root {
+  /* ---- Brand ------------------------------------------------ */
+  --alfrex-brand:          #E11B22;  /* identity, active nav, attention only */
+  --alfrex-brand-pressed:  #C9151C;  /* active nav text / hover */
+  --alfrex-brand-wash:     #FCEAEB;  /* active nav background */
+  --alfrex-ink:            #1B1C20;  /* PRIMARY action + headings (not red) */
+
+  /* ---- Surfaces -------------------------------------------- */
+  --alfrex-bg-app:         #EEEFF2;  /* page background */
+  --alfrex-bg-inset:       #F8F9FB;  /* table head, inset wells */
+  --alfrex-bg-card:        #FFFFFF;  /* cards, rows, panels */
+
+  /* ---- Lines ----------------------------------------------- */
+  --alfrex-border-card:    #E4E5E9;  /* card / control container border */
+  --alfrex-border-control: #D8DAE0;  /* inputs, ghost buttons */
+  --alfrex-hairline:       #EDEEF1;  /* card-header divider */
+  --alfrex-hairline-row:   #F2F3F5;  /* between list rows */
+
+  /* ---- Text ------------------------------------------------ */
+  --alfrex-text-strong:    #1B1C20;
+  --alfrex-text:           #3A3D44;
+  --alfrex-text-muted:     #6B6E76;
+  --alfrex-text-faint:     #9398A1;  /* labels, meta */
+  --alfrex-text-disabled:  #BFC2C9;
+
+  /* ---- Status (tint / text / solid-for-dots&bars) ---------- */
+  --alfrex-planning-bg:    #EDEFF2;  --alfrex-planning-fg:    #5A5E66;  --alfrex-planning-solid:    #9AA0A8;
+  --alfrex-pending-bg:     #FBEFD6;  --alfrex-pending-fg:     #9A6A12;  --alfrex-pending-solid:     #E0A33E;
+  --alfrex-booked-bg:      #E1EAFA;  --alfrex-booked-fg:      #2A5BB8;  --alfrex-booked-solid:      #3A6FCC;
+  --alfrex-transit-bg:     #ECE7FB;  --alfrex-transit-fg:     #5B46C4;  --alfrex-transit-solid:     #7A66D6;
+  --alfrex-delivered-bg:   #DEF1E5;  --alfrex-delivered-fg:   #1F7A45;  --alfrex-delivered-solid:   #3FA463;
+  --alfrex-alert-bg:       #FBE5E6;  --alfrex-alert-fg:       #C01620;  --alfrex-alert-solid:       #E1444C;
+  /* secondary tag used for consolidated / new */
+  --alfrex-tag-bg:         #ECE7FB;  --alfrex-tag-fg:         #5B46C4;
+
+  /* ---- Radius ---------------------------------------------- */
+  --alfrex-r-pill:    6px;
+  --alfrex-r-control: 9px;
+  --alfrex-r-card:    12px;
+  --alfrex-r-modal:   16px;
+
+  /* ---- Spacing (4px base) ---------------------------------- */
+  --alfrex-sp-1: 4px;
+  --alfrex-sp-2: 8px;    /* inline gap */
+  --alfrex-sp-3: 12px;
+  --alfrex-sp-4: 14px;   /* grid gap */
+  --alfrex-sp-5: 18px;   /* card padding */
+  --alfrex-sp-6: 24px;
+  --alfrex-sp-8: 32px;   /* page gutter */
+
+  /* ---- Elevation ------------------------------------------- */
+  --alfrex-scrim:        rgba(20,21,24,.42);
+  --alfrex-shadow-toast: 0 14px 34px rgba(15,18,25,.30);
+  --alfrex-shadow-modal: 0 24px 60px rgba(15,18,25,.28);
+
+  /* ---- Type ------------------------------------------------ */
+  --alfrex-font-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --alfrex-font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+}
+
+/* Load the families (or self-host the same weights):
+   IBM Plex Sans 400/500/600/700 · IBM Plex Mono 400/500/600
+   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+*/

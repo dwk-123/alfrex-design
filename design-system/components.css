@@ -1,0 +1,124 @@
+/* ============================================================
+   Alfrex Operations — Component classes
+   Framework-agnostic CSS built on tokens.css. Import tokens.css
+   first. These are the canonical building blocks — prefer them
+   over re-styling from scratch so every screen stays consistent.
+   Prefix: .als-  (Alfrex Logistics System)
+   ============================================================ */
+
+/* Base */
+.als-root { font-family: var(--alfrex-font-sans); color: var(--alfrex-text-strong);
+  background: var(--alfrex-bg-app); -webkit-font-smoothing: antialiased; }
+.als-mono { font-family: var(--alfrex-font-mono); font-variant-numeric: tabular-nums; }
+
+/* ---- Buttons --------------------------------------------------
+   <button class="als-btn als-btn--primary">Create shipment</button>   */
+.als-btn { display:inline-flex; align-items:center; gap:7px; font-family:var(--alfrex-font-sans);
+  font-size:13px; font-weight:600; height:38px; padding:0 16px; border-radius:var(--alfrex-r-control);
+  border:1px solid transparent; cursor:pointer; white-space:nowrap; }
+.als-btn--primary { background:var(--alfrex-ink); color:#fff; }
+.als-btn--primary:hover { background:#11141A; }
+.als-btn--ghost { background:#fff; color:var(--alfrex-text); border-color:var(--alfrex-border-control); }
+.als-btn--ghost:hover { background:#F6F7F9; }
+.als-btn--danger { background:var(--alfrex-brand); color:#fff; }   /* money-committing only (Book) */
+.als-btn--danger:hover { background:var(--alfrex-brand-pressed); }
+.als-btn--xlink { background:#EAF1FC; color:#2A5BB8; border-color:#CDDDF6; }  /* cross-record link */
+.als-btn--link { height:auto; padding:0; background:none; border:none; color:#2A5BB8; }
+.als-btn--mini { height:auto; font-size:12px; padding:6px 11px; border-radius:7px;
+  background:#fff; color:var(--alfrex-text); border-color:var(--alfrex-border-control); }
+.als-btn:disabled, .als-btn--disabled { background:#F6F7F9; color:var(--alfrex-text-disabled);
+  border-color:#EAEBEE; cursor:not-allowed; }
+
+/* ---- Status pill ---------------------------------------------
+   <span class="als-pill als-pill--booked">Booked</span>           */
+.als-pill { display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:600;
+  padding:4px 10px; border-radius:var(--alfrex-r-pill); white-space:nowrap; }
+.als-pill--planning  { background:var(--alfrex-planning-bg);  color:var(--alfrex-planning-fg); }
+.als-pill--pending   { background:var(--alfrex-pending-bg);   color:var(--alfrex-pending-fg); }
+.als-pill--booked    { background:var(--alfrex-booked-bg);    color:var(--alfrex-booked-fg); }
+.als-pill--transit   { background:var(--alfrex-transit-bg);   color:var(--alfrex-transit-fg); }
+.als-pill--delivered { background:var(--alfrex-delivered-bg); color:var(--alfrex-delivered-fg); }
+.als-pill--alert     { background:var(--alfrex-alert-bg);     color:var(--alfrex-alert-fg); }
+.als-tag { display:inline-flex; align-items:center; font-size:10.5px; font-weight:600; padding:2px 7px;
+  border-radius:5px; background:var(--alfrex-tag-bg); color:var(--alfrex-tag-fg); letter-spacing:.02em; }
+.als-badge { display:inline-flex; align-items:center; justify-content:center; min-width:18px; height:18px;
+  padding:0 6px; border-radius:9px; font-family:var(--alfrex-font-mono); font-size:11px; font-weight:600;
+  background:var(--alfrex-pending-bg); color:var(--alfrex-pending-fg); }
+
+/* ---- Card -----------------------------------------------------
+   <section class="als-card">
+     <header class="als-card__head"><h3 class="als-card__title">…</h3></header>
+     <div class="als-card__body">…</div>
+   </section>                                                       */
+.als-card { background:var(--alfrex-bg-card); border:1px solid var(--alfrex-border-card);
+  border-radius:var(--alfrex-r-card); overflow:hidden; }
+.als-card__head { display:flex; align-items:center; gap:10px; padding:15px 18px;
+  border-bottom:1px solid var(--alfrex-hairline); }
+.als-card__title { margin:0; font-size:14px; font-weight:600; color:var(--alfrex-text-strong); }
+.als-card__note { font-size:12px; color:var(--alfrex-text-faint); }   /* place after title or margin-left:auto */
+.als-card__body { padding:18px; }
+
+/* ---- Metric card ---------------------------------------------- */
+.als-metric { background:var(--alfrex-bg-card); border:1px solid var(--alfrex-border-card);
+  border-radius:var(--alfrex-r-card); padding:16px 16px 14px; }
+.als-metric__label { display:flex; align-items:center; gap:7px; font-size:12px; font-weight:500;
+  color:var(--alfrex-text-muted); margin-bottom:11px; }
+.als-metric__label::before { content:""; width:8px; height:8px; border-radius:2px;
+  background:var(--alfrex-planning-solid); }            /* override bg with a status --solid */
+.als-metric__value { font-family:var(--alfrex-font-mono); font-size:27px; font-weight:600;
+  line-height:1; color:var(--alfrex-text-strong); }
+.als-metric__sub { font-size:12px; color:var(--alfrex-text-faint); margin-top:7px; }
+
+/* ---- Inputs & chips ------------------------------------------- */
+.als-label { display:block; font-size:12px; font-weight:600; color:var(--alfrex-text-muted); margin-bottom:6px; }
+.als-input { width:100%; height:38px; padding:0 12px; font-family:var(--alfrex-font-sans); font-size:14px;
+  color:var(--alfrex-text-strong); background:#fff; border:1px solid var(--alfrex-border-control);
+  border-radius:var(--alfrex-r-control); outline:none; }
+.als-input:focus { border-color:#B8BBC3; }
+.als-input--num { font-family:var(--alfrex-font-mono); text-align:right; }
+.als-chip { font-size:12.5px; font-weight:500; color:var(--alfrex-text-muted); background:#fff;
+  border:1px solid var(--alfrex-border-card); padding:6px 13px; border-radius:7px; cursor:pointer; }
+.als-chip--active { font-weight:600; color:#fff; background:var(--alfrex-ink); border-color:var(--alfrex-ink); }
+
+/* ---- Grid table ----------------------------------------------
+   Set --cols per table, e.g. style="--cols:92px 1.5fr 150px 90px 24px"
+   <div class="als-thead">…</div>
+   <div class="als-row">…</div>                                    */
+.als-thead, .als-row { display:grid; grid-template-columns:var(--cols); gap:14px; padding:0 18px; align-items:center; }
+.als-thead { height:42px; background:var(--alfrex-bg-inset); border-bottom:1px solid var(--alfrex-hairline);
+  font-size:11px; font-weight:600; letter-spacing:.04em; color:var(--alfrex-text-faint); text-transform:uppercase; }
+.als-row { min-height:62px; border-bottom:1px solid var(--alfrex-hairline-row); cursor:pointer; }
+.als-row:hover { background:#FBFBFC; }
+.als-num { font-family:var(--alfrex-font-mono); text-align:right; }     /* numeric cells */
+
+/* ---- Nav rail ------------------------------------------------- */
+.als-nav-item { display:flex; align-items:center; gap:11px; width:100%; padding:9px 13px; margin-bottom:2px;
+  border:none; border-left:3px solid transparent; border-radius:8px; background:transparent;
+  color:var(--alfrex-text-muted); font-family:var(--alfrex-font-sans); font-size:14px; font-weight:500;
+  cursor:pointer; text-align:left; }
+.als-nav-item:hover { background:#F3F4F6; }
+.als-nav-item--active { background:var(--alfrex-brand-wash); color:var(--alfrex-brand-pressed);
+  font-weight:600; border-left-color:var(--alfrex-brand); }
+.als-nav-item--disabled { color:var(--alfrex-text-disabled); cursor:not-allowed; }
+
+/* ---- Tabs ----------------------------------------------------- */
+.als-tabs { display:flex; gap:22px; border-bottom:1px solid var(--alfrex-border-card); }
+.als-tab { background:none; border:none; border-bottom:2px solid transparent; padding:10px 2px;
+  font-size:13.5px; font-weight:500; color:#8A8D96; cursor:pointer; }
+.als-tab--active { color:var(--alfrex-text-strong); font-weight:600; border-bottom-color:var(--alfrex-brand); }
+
+/* ---- Modal & toast -------------------------------------------- */
+.als-scrim { position:fixed; inset:0; background:var(--alfrex-scrim); display:flex; align-items:center;
+  justify-content:center; z-index:50; }
+.als-modal { background:#fff; border-radius:var(--alfrex-r-modal); box-shadow:var(--alfrex-shadow-modal);
+  max-height:88vh; display:flex; flex-direction:column; overflow:hidden; }
+.als-modal__head { display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+  padding:20px 22px 16px; border-bottom:1px solid var(--alfrex-hairline); }
+.als-modal__body { padding:20px 22px; overflow-y:auto; }
+.als-modal__foot { display:flex; justify-content:flex-end; gap:10px; padding:15px 22px;
+  border-top:1px solid var(--alfrex-hairline); background:#FBFBFC; }
+.als-modal--native { border:1px solid var(--alfrex-border-card); color:var(--alfrex-text); }
+.als-modal--native:not([open]) { display:none; }
+.als-modal--native::backdrop { background:var(--alfrex-scrim); }
+.als-toast { position:fixed; bottom:26px; right:26px; z-index:60; display:flex; align-items:center; gap:12px;
+  background:var(--alfrex-ink); color:#fff; padding:13px 17px; border-radius:11px; box-shadow:var(--alfrex-shadow-toast); }
