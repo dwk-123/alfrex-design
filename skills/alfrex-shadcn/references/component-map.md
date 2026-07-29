@@ -49,8 +49,8 @@ from this skill's `assets/components/` directory.
 | `.als-nav-item--disabled` | `<NavItem disabled>` for a button, or `aria-disabled` plus blocked navigation for a rendered link |
 | `.als-tabs` | Stock `<TabsList className="h-auto gap-[22px] rounded-none border-b bg-transparent p-0">` |
 | `.als-tab` | Stock `<TabsTrigger className="rounded-none border-b-2 border-transparent px-0.5 py-2.5 text-[13.5px]">` |
-| `.als-tab--active` | Stock Tabs `data-[state=active]:border-[var(--alfrex-brand)] data-[state=active]:text-foreground`; state comes from Tabs, not a hand-set class |
-| `.als-scrim` | Stock `<DialogBackdrop>` emitted by `<DialogContent>`; theme supplies `--alfrex-scrim` when an override is needed |
+| `.als-tab--active` | Stock Base UI Tabs `data-active:border-[var(--alfrex-brand)] data-active:text-foreground`; state comes from Tabs, not a hand-set class |
+| `.als-scrim` | Stock `<DialogOverlay>` emitted by `<DialogContent>`; set its generated overlay class to `bg-[var(--alfrex-scrim)]` when exact Alfrex scrim opacity is required |
 | `.als-modal` | Stock `<DialogContent className="max-h-[88vh] overflow-hidden rounded-[var(--alfrex-r-modal)] border shadow-[var(--alfrex-shadow-modal)]">` |
 | `.als-modal__head` | Stock `<DialogHeader className="border-b px-[22px] pt-5 pb-4">` |
 | `.als-modal__body` | A child `<div className="overflow-y-auto px-[22px] py-5">` inside DialogContent |

@@ -96,8 +96,8 @@ Load IBM Plex Sans weights 400, 500, 600, 700 and IBM Plex Mono weights 400,
 | Figures | Mono 13px / 600 / tabular; right-aligned in tables |
 | Status pill | Sans 11.5px / 600 |
 
-A sentence containing a number may remain Sans, but isolate the value in Mono
-when it is operationally scanned or compared. IDs are always Mono.
+The surrounding sentence remains Sans, but wrap the numeric value itself in Mono.
+Do this even for inline dates, percentages, and measurements. IDs are always Mono.
 
 ## Spacing, radius, and elevation
 
